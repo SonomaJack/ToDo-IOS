@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D51D591B1C6ACA2000339EA0 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D59191C6ACA2000339EA0 /* ToDoListViewController.swift */; };
+		D51D591C1C6ACA2000339EA0 /* ToDoListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D51D591A1C6ACA2000339EA0 /* ToDoListViewController.xib */; };
 		D5D13DF01C697DE400391855 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D13DEF1C697DE400391855 /* AppDelegate.swift */; };
-		D5D13DF21C697DE400391855 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D13DF11C697DE400391855 /* ViewController.swift */; };
 		D5D13DF51C697DE400391855 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D13DF31C697DE400391855 /* Main.storyboard */; };
 		D5D13DF71C697DE400391855 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5D13DF61C697DE400391855 /* Assets.xcassets */; };
 		D5D13DFA1C697DE400391855 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D13DF81C697DE400391855 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D51D59191C6ACA2000339EA0 /* ToDoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
+		D51D591A1C6ACA2000339EA0 /* ToDoListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoListViewController.xib; sourceTree = "<group>"; };
 		D5D13DEC1C697DE400391855 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D13DEF1C697DE400391855 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D5D13DF11C697DE400391855 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D5D13DF41C697DE400391855 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5D13DF61C697DE400391855 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5D13DF91C697DE400391855 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				D5D13DEF1C697DE400391855 /* AppDelegate.swift */,
-				D5D13DF11C697DE400391855 /* ViewController.swift */,
+				D51D59191C6ACA2000339EA0 /* ToDoListViewController.swift */,
+				D51D591A1C6ACA2000339EA0 /* ToDoListViewController.xib */,
 				D5D13DF31C697DE400391855 /* Main.storyboard */,
 				D5D13DF61C697DE400391855 /* Assets.xcassets */,
 				D5D13DF81C697DE400391855 /* LaunchScreen.storyboard */,
@@ -122,6 +125,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D51D591C1C6ACA2000339EA0 /* ToDoListViewController.xib in Resources */,
 				D5D13DFA1C697DE400391855 /* LaunchScreen.storyboard in Resources */,
 				D5D13DF71C697DE400391855 /* Assets.xcassets in Resources */,
 				D5D13DF51C697DE400391855 /* Main.storyboard in Resources */,
@@ -135,7 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5D13DF21C697DE400391855 /* ViewController.swift in Sources */,
+				D51D591B1C6ACA2000339EA0 /* ToDoListViewController.swift in Sources */,
 				D5D13DF01C697DE400391855 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +288,7 @@
 				D5D13E001C697DE400391855 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
