@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ToDoListViewController: UIViewController, UITableViewDataSource {
+class ToDoListViewController: UIViewController, UITableViewDataSource, AddItemViewControllerProtocol {
     
+    let CellIdentifier = "CellIdentifier"
     @IBOutlet weak var tableView: UITableView?
+ 
 
     var items = NSMutableArray()
     
@@ -23,15 +25,24 @@ class ToDoListViewController: UIViewController, UITableViewDataSource {
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         self.tableView?.dataSource = self
-        self.tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier:  "CellIdentifier")
-        
-        self.items.addObject("Jack")
-        self.items.addObject("Jill")
+        self.tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier:  CellIdentifier)
+      
     }
     
-    override func setEditing(editing: Bool, animated: Bool) {
-        print("Edit")
+    //MARK:  AddItemViewControllerPrpotocol
+    
+    func addItem(item: String) {
+        
+        //Add the new item to the items array
+        self.items.insertObject(item, atIndex: 0)
+        
+       // self.item.addOb(item)
+        
+        //mModify the tableview / lsitbview to dispaly the new item
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        self.tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
     }
+   
     //MARK:  UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,7 +54,7 @@ class ToDoListViewController: UIViewController, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier")!
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier)!
         
         let item = self.items[indexPath.row] as! String
         cell.textLabel?.text = item
@@ -54,8 +65,17 @@ class ToDoListViewController: UIViewController, UITableViewDataSource {
     //MARK:Actions
     
     func didTapAdd(sender: UIBarButtonItem){
-        print ("Add")
         
+        let viewController = AddItemViewController()
+        viewController.delegate = self
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.view.backgroundColor=UIColor.whiteColor()
+        self.presentViewController(navigationController, animated: true, completion: nil)
+        
+    }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        print("Edit")
     }
     
 }
