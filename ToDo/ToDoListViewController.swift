@@ -10,14 +10,21 @@ import UIKit
 
 class ToDoListViewController: UIViewController, UITableViewDataSource, AddItemViewControllerProtocol {
     
+    let cacheKey = "CacheKey"
     let CellIdentifier = "CellIdentifier"
     @IBOutlet weak var tableView: UITableView?
  
 
     var items = NSMutableArray()
+    var cache: CacheProtocol = UserDefaultsCache()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load and persisted data, if any exists
+        //...
+        self.load()
         
         self.title = "ToDo List"
         //in the last arg the colon designated there are parameters
@@ -29,7 +36,7 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, AddItemVi
       
     }
     
-    //MARK:  AddItemViewControllerPrpotocol
+    //MARK:  AddItemViewControllerProtocol
     
     func addItem(item: String) {
         
@@ -41,6 +48,8 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, AddItemVi
         //mModify the tableview / lsitbview to dispaly the new item
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+        //Save current data to disk
+        self.save()
     }
    
     //MARK:  UITableViewDataSource
@@ -61,6 +70,16 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, AddItemVi
         return cell
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete
+        {
+            self.items.removeObjectAtIndex(indexPath.row)
+            self.tableView?.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Left)
+            
+            //Save data to disk
+            self.save()
+        }
+    }
     
     //MARK:Actions
     
@@ -75,7 +94,23 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, AddItemVi
     }
     
     override func setEditing(editing: Bool, animated: Bool) {
-        print("Edit")
+        super.setEditing(editing, animated: animated)
+        self.tableView?.setEditing(editing,animated: animated)
+        self.navigationItem.rightBarButtonItem?.enabled = !editing
+    }
+    
+    // MARK: Cache functions
+   
+    func load()
+    {
+        let object = self.cache.LoadObjectForkey(cacheKey)
+        if let items   =  object as? NSArray{
+            self.items = NSMutableArray(array: items)
+        }
+    }
+    
+    func save(){
+        self.cache.saveObjecty(self.items, key: cacheKey)
     }
     
 }
