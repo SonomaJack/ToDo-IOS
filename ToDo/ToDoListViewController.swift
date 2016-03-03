@@ -16,7 +16,7 @@ class ToDoListViewController: UIViewController, UITableViewDataSource, AddItemVi
  
 
     var items = NSMutableArray()
-    var cache: CacheProtocol = UserDefaultsCache()
+    var cache: CacheProtocol = KeyedArchiverCache() //UserDefaultsCache()
     
     
     override func viewDidLoad() {
